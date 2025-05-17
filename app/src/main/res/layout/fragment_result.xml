@@ -41,7 +41,7 @@
         android:layout_marginTop="50dp"
         android:layout_marginEnd="30dp"
         android:backgroundTint="@color/my_background"
-        android:text="New Quiz"
+        android:text="@string/button_again"
         android:textColor="@color/white"
         android:textSize="24sp"
         app:cornerRadius="10dp"

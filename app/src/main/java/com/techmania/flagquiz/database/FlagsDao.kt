@@ -13,13 +13,13 @@ class FlagsDao{
         val recordList = ArrayList<FlagsModel>()
             val database: SQLiteDatabase = helper.writableDatabase            //writableDatabase
             val cursor: Cursor =
-                database.rawQuery("SELECT * FROM flags ORDER BY RANDOM() LIMIT 10", null)
+                database.rawQuery("SELECT * FROM flag ORDER BY RANDOM()", null)
 
-            val idIndex = cursor.getColumnIndex("flag_id")
+            val idIndex = cursor.getColumnIndex("flag_Id")
             val countryNameIndex = cursor.getColumnIndex("country_name")
             val flagNameIndex = cursor.getColumnIndex("flag_name")
 
-        while(cursor.moveToFirst()){
+        while(cursor.moveToNext()){
 
             val record = FlagsModel(
                 cursor.getInt(idIndex),
@@ -37,9 +37,9 @@ class FlagsDao{
 
         val recordList = ArrayList<FlagsModel>()
         val database: SQLiteDatabase = helper.writableDatabase
-        val cursor: Cursor = database.rawQuery("SELECT * FROM flags WHERE flag_id != ? ORDER BY RANDOM() LIMIT 3", arrayOf(id.toString()))
+        val cursor: Cursor = database.rawQuery("SELECT * FROM flag WHERE flag_Id != ? ORDER BY RANDOM() LIMIT 3", arrayOf(id.toString()))
 
-        val idIndex =  cursor.getColumnIndex("flag_id")
+        val idIndex =  cursor.getColumnIndex("flag_Id")
         val countryNameIndex = cursor.getColumnIndex("country_name")
         val flagNameIndex = cursor.getColumnIndex("flag_name")
 

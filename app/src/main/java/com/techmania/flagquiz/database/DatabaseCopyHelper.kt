@@ -5,7 +5,6 @@ import android.database.SQLException
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteException
 import android.database.sqlite.SQLiteOpenHelper
-import android.widget.Toast
 import java.io.FileOutputStream
 import java.io.IOException
 import java.io.OutputStream
@@ -29,7 +28,7 @@ class DatabaseCopyHelper(context: Context) : SQLiteOpenHelper(context,DB_NAME,nu
      * Check if the database already exist to avoid re-copying the file each time you open the application.
      * @return true if it exists, false if it doesn't
      */
-    private fun checkDataBase(): Boolean {
+    private fun checkDataBase(): Boolean{
         var checkDB: SQLiteDatabase? = null
         try {
             val myPath: String = DB_PATH + DB_NAME
@@ -113,15 +112,15 @@ class DatabaseCopyHelper(context: Context) : SQLiteOpenHelper(context,DB_NAME,nu
         super.close()
     }
 
-    override fun onCreate(db: SQLiteDatabase?) {
+    override fun onCreate(db: SQLiteDatabase?){
 
-        db?.execSQL("CREATE TABLE IF NOT EXISTS flags (flag_id INTEGER, country_name TEXT, flag_name TEXT)")
+        db?.execSQL("CREATE TABLE IF NOT EXISTS flag(flag_Id INTEGER, country_name TEXT, flag_name TEXT)")
 
     }
 
     override fun onUpgrade(db: SQLiteDatabase?, oldVersion: Int, newVersion: Int) {
 
-        db?.execSQL("DROP TABLE IF EXISTS flags")
+        db?.execSQL("DROP TABLE IF EXISTS flag")
         onCreate(db)
     }
 }
